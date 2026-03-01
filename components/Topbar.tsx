@@ -22,7 +22,7 @@ export default function Navbar() {
                         href="/"
                         className="text-xl font-bold tracking-tight hover:opacity-90 transition-opacity"
                     >
-                        CyberNexus<span className="text-primary">.</span>
+                        InnateVoid<span className="text-primary">.</span>
                     </Link>
 
                     <nav className="hidden md:flex items-center gap-6">

@@ -37,7 +37,7 @@ export default async function BlogPage({
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-                  CyberNexus<span className="text-primary italic">.</span>
+                  Innate<span className="italic text-amber-700">Void</span>
                 </h1>
                 <p className="text-muted-foreground text-lg font-light max-w-lg leading-relaxed">
                   Deep dives into computing, systems architecture, and the art of structured learning.
