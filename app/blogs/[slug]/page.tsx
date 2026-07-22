@@ -1,10 +1,11 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/layout/container";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { createClient } from "@/lib/supabase/server";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 async function getPost(slug: string) {
   const supabase = await createClient();
@@ -22,6 +23,12 @@ async function getPost(slug: string) {
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getPost(slug);
+
+  async function Delete() {
+    const supabase = await createClient();
+    await supabase.from("posts").delete().eq("slug", slug);
+    redirect("/");
+  }
 
   if (!post) {
     notFound();
@@ -49,6 +56,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1]">
                 {post.title}
               </h1>
+              <Button variant="destructive" onClick={Delete}>Delete Post</Button>
             </div>
 
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground font-medium">
